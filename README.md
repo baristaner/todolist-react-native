@@ -11,4 +11,4 @@ npm install
 ```
 expo start
 ```
-<img src="https://raw.githubusercontent.com/baristaner/todolist-react-native/main/imgs/ss.png" width="300px"/>
+<img src="https://raw.githubusercontent.com/baristaner/todolist-react-native/main/imgs/ss.PNG" width="300px"/>
