@@ -1,7 +1,6 @@
 import React,{useState} from 'react';
-import { Keyboard, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import { Keyboard, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View,ScrollView} from 'react-native';
 import Task from './components/task';
-
 
 export default function App() {
   const [task,setTask] = useState();
@@ -27,20 +26,19 @@ export default function App() {
       {/*Bugunun Yapilicaklari*/}
       <View style={styles.tasksWrapper}>
           <Text style={styles.sectionTitle}>Yapılıcaklar Listesi</Text>
-
       </View>
 
-      <View style={styles.items}>
+      <ScrollView style={styles.items}>
       {
         taskItems.map((item,index) =>{
           return (
-            <TouchableOpacity key={index} onPress={() => completeTask(index)}>
+            <TouchableOpacity style={styles.itemscolor} key={index} onPress={() => completeTask(index)}>
               <Task key={index} text={item} />
             </TouchableOpacity>
           )
         })
       }
-      </View>
+      </ScrollView>
 
     {/*Yapilicaklari yaz*/}
     
@@ -50,7 +48,8 @@ export default function App() {
       <TextInput style={styles.input} placeholder={'Yapılıcak Bir Şey Gir'} value={task} onChangeText={text => setTask(text)}/>
       <TouchableOpacity onPress={() => handleAddTask()}>
       <View style={styles.addWrapper}>
-        <Text style={styles.AddText}>+</Text>
+      <Text style={styles.AddText}>+</Text>
+
       </View>
     </TouchableOpacity>
     </KeyboardAvoidingView>
@@ -63,21 +62,27 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#3D3D3D',
+    backgroundColor: '#FFF',
+    marginTop:-30,
   },
   tasksWrapper : {
     paddingTop: 80,
     alignItems:'center',
+    backgroundColor: '#E8E8E8',
 
   },
   sectionTitle : {
-    color: "white",
-    fontSize:24,
+    color: "black",
+    fontSize:20,
     fontWeight:'bold',
+    
   },
   items : {
     marginTop: 30,
+    marginBottom:120,
     paddingHorizontal: 20,
+    
+    
   },
   writeTaskWrapper : {
     position: 'absolute',
@@ -86,8 +91,10 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     justifyContent:'space-around',
     alignItems:'center',
+    
   },
   input : {
+    marginBottom:-30,
     paddingVertical : 15,
     paddingHorizontal: 15,
     backgroundColor: '#FFFF',
@@ -97,6 +104,7 @@ const styles = StyleSheet.create({
     width:250,
   },
   addWrapper : {
+    marginBottom:-30,
     width:60,
     height:60,
     backgroundColor:'#FFFF',
@@ -105,6 +113,7 @@ const styles = StyleSheet.create({
     alignItems:'center',
     borderColor:'#C0C0C0',
     borderWidth:1,
+    
   },
   AddText : {},
 });
